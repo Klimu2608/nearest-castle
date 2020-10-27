@@ -1,0 +1,11 @@
+@import "../../styles/mixins";
+
+@include desktop {
+  .App-header {
+    background-color: springgreen;
+  }
+}
+
+@include tablet {
+  background-color: indianred;
+}
