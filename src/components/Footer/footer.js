@@ -6,7 +6,10 @@ export const Footer = () => {
         <>
             <footer className="footer">
                 <div className="footer__container container">
-                    <button className="footer__contact">Contact us</button>
+                    <nav className="footer__nav">
+                        <button className="footer__btn btn__contact">Contact us</button>
+                        <button className="footer__btn btn__about">About</button>
+                    </nav>
                     <p className="footer__text">Copyright by Jakub Klimczak</p>
                 </div>
             </footer>

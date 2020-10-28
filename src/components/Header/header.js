@@ -3,6 +3,12 @@ import "./header.scss";
 
 export const Header = ({formName}) => {
     const width = window.innerWidth;
+
+    const handleClickMenu = () => {
+        const headerNav = document.querySelector(".header__nav--mobile");
+        headerNav.classList.toggle("hidden");
+    }
+
     if (width > 768) {
         return (
             <header className="header">
@@ -16,7 +22,6 @@ export const Header = ({formName}) => {
                         <button className="header__nav__btn btn__main">main</button>
                         <button className="header__nav__btn btn__all">all</button>
                         <button className="header__nav__btn btn__my">my</button>
-                        <button className="header__nav__btn btn__about">About</button>
                     </nav>
                     <a className="header__user" href="#">
                         <div className="header__user__icon"></div>
@@ -35,7 +40,12 @@ export const Header = ({formName}) => {
                         <span>Castle</span>
                     </a>
                     <span className="header__username">Hi, {formName}</span>
-                    <button className="header__menu__button"/>
+                    <button onClick={handleClickMenu} className="header__menu__button"/>
+                    <nav className="header__nav--mobile hidden">
+                        <button className="header__btn--mobile mobile__main">Main</button>
+                        <button className="header__btn--mobile mobile__all">All</button>
+                        <button className="header__btn--mobile mobile__my">My</button>
+                    </nav>
                 </div>
             </header>
         );

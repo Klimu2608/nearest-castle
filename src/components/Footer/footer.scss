@@ -28,22 +28,36 @@
       text-align: right;
     }
 
-    .footer__contact {
-      text-transform: uppercase;
-      color: $font-color;
-      width: auto;
+    .footer__nav {
       height: 100%;
-      border: none;
-      background-color: transparent;
+      
+      .footer__btn {
+        text-transform: uppercase;
+        color: $font-color;
+        width: auto;
+        height: 100%;
+        border: none;
+        background-color: transparent;
+        margin-left: 10px;
+      }
+      .footer__btn:active {
+        color: tomato;
+      }
     }
 
-    :first-child:hover {
-      border-top: 3px solid tomato;
-      color: tomato;
-      height: 100%;
-      font-size: 13px;
-      cursor: pointer;
-    }
   }
+}
 
+@include desktop {
+    .footer {
+      .footer__container{
+        .footer__nav {
+          .footer__btn:hover {
+            border-top: 3px solid tomato;
+            color: tomato;
+            cursor: pointer;
+          }
+        }
+      }
+    }
 }
