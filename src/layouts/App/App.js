@@ -1,12 +1,12 @@
 import './App.scss';
 import React from "react";
 import {Header} from "../../components/Header/header";
-import {Footer} from "../../components/Footer/footer"
+import {Footer} from "../../components/Footer/footer";
 
 function App() {
   return (
       <>
-        <Header />
+        <Header formName="Kuba"/>
         <Footer />
       </>
   );

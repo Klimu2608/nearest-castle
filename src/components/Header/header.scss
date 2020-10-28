@@ -1,11 +1,182 @@
+@import "../../styles/reset";
 @import "../../styles/mixins";
+@import "../../styles/fonts";
+@import "../../styles/variables";
 
-@include desktop {
-  .App-header {
-    background-color: springgreen;
+.header {
+  background-color: $header-color;
+  color: $font-color;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  font-family: $main-regular;
+
+  .header__container {
+    height: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header__logo {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      height: 100%;
+      font-family: $logo-font;
+      font-size: 1.7rem;
+      text-decoration: none;
+      margin-left: 10px;
+
+      span {
+        color: $font-color;
+        line-height: 50px;
+      }
+
+      .header__logo__castle {
+        background-image: url("../../icons/castle2.svg");
+        background-repeat: no-repeat;
+        height: 50px;
+        width: 50px;
+        margin: 0 7px;
+      }
+    }
+
+    .header__username {
+      display: block;
+      font-size: 1.1rem;
+      margin: 0 15px;
+    }
+
+    .header__menu__button {
+      background-image: url("../../icons/menu.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $background-color;
+      color: $font-color;
+      border: 1px solid black;
+      border-radius: 5px;
+      height: 45px;
+      width: 45px;
+      margin-right: 15px;
+    }
   }
 }
 
 @include tablet {
-  background-color: indianred;
+  .header {
+    .header__container {
+      max-width: $container-width;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header__nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+
+      .header__nav__btn {
+        text-transform: uppercase;
+        color: $font-color;
+        width: 50px;
+        height: 100%;
+        border: none;
+        background-color: transparent;
+      }
+
+      :hover {
+        border-bottom: 3px solid tomato;
+        color: tomato;
+        cursor: pointer;
+      }
+    }
+
+    .header__user {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      text-decoration: none;
+      margin: 0 20px;
+      color: $font-color;
+
+      .header__user__icon {
+        height: 30px;
+        width: 30px;
+        background-image: url("../../icons/user.svg");
+        background-position: center;
+        background-size: cover;
+        background-color: $background-color;
+        border-radius: 50%;
+      }
+
+      .header__user__name {
+        display: block;
+        font-size: 1.1rem;
+        margin: 0 15px;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .header {
+    .header__container {
+      max-width: $container-width;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header__nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+
+      .header__nav__btn {
+        text-transform: uppercase;
+        color: $font-color;
+        width: 50px;
+        height: 100%;
+        border: none;
+        background-color: transparent;
+      }
+
+      :hover {
+        border-bottom: 3px solid tomato;
+        color: tomato;
+        cursor: pointer;
+      }
+    }
+
+    .header__user {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      text-decoration: none;
+      margin: 0 20px;
+      color: $font-color;
+
+      .header__user__icon {
+        height: 30px;
+        width: 30px;
+        background-image: url("../../icons/user.svg");
+        background-position: center;
+        background-size: cover;
+        background-color: $background-color;
+        border-radius: 50%;
+      }
+
+      .header__user__name {
+        display: block;
+        font-size: 1.1rem;
+        margin: 0 15px;
+      }
+    }
+  }
 }
