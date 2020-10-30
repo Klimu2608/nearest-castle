@@ -25,7 +25,7 @@ export const Header = ({formName}) => {
                     </nav>
                     <a className="header__user" href="#">
                         <div className="header__user__icon"></div>
-                        <span className="header__user__name">Hi, {formName}</span>
+                        <span className="header__user__name">{formName}</span>
                     </a>
                 </div>
             </header>
@@ -39,7 +39,7 @@ export const Header = ({formName}) => {
                         <div className="header__logo__castle"></div>
                         <span>Castle</span>
                     </a>
-                    <span className="header__username">Hi, {formName}</span>
+                    {formName === "" ? null : <span className="header__username">Hi, {formName}</span>}
                     <button onClick={handleClickMenu} className="header__menu__button"/>
                     <nav className="header__nav--mobile hidden">
                         <button className="header__btn--mobile mobile__main">Main</button>
