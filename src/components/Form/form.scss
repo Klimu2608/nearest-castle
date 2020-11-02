@@ -43,24 +43,14 @@
       z-index: -1;
     }
     .form__checkbox {
-      //cursor: pointer;
       margin-bottom: 20px;
       display: flex;
       align-items: center;
       font-size: 13px;
       color: $header-color;
 
-      .form__checkbox__input:checked + .form__checkbox__span {
-        background: tomato;
-      }
 
       .form__checkbox__input {
-        position: absolute;
-        opacity: 0;
-        height: 0;
-        width: 0;
-      }
-      .form__checkbox__span {
         display: block;
         width: 15px;
         height: 15px;
@@ -71,14 +61,25 @@
         margin-right: 10px;
       }
     }
-    .form__btn {
-      background: tomato;
-      color: $header-color;
+    .form__link {
       width: 150px;
       height: 40px;
       margin-top: 40px;
-      border: 1px solid $header-color;
-      border-radius: 5px;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: $main-regular;
+      font-weight: bold;
+      color: $header-color;
+
+      .form__btn {
+        height: 100%;
+        width: 100%;
+        background: tomato;
+        border: 1px solid $header-color;
+        border-radius: 5px;
+      }
     }
   }
 }

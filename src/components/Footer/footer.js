@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.scss";
+import {BrowserRouter as Router, Link} from "react-router-dom";
 
 export const Footer = () => {
     return (
@@ -7,8 +8,8 @@ export const Footer = () => {
             <footer className="footer">
                 <div className="footer__container container">
                     <nav className="footer__nav">
-                        <button className="footer__btn btn__contact">Contact us</button>
-                        <button className="footer__btn btn__about">About</button>
+                        <Link to="/contact" className="footer__link">Contact us</Link>
+                        <Link to="/about" className="footer__link">About</Link>
                     </nav>
                     <p className="footer__text">Copyright by Jakub Klimczak</p>
                 </div>

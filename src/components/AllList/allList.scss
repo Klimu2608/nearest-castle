@@ -1,0 +1,64 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+@import "../../styles/fonts";
+
+.mainView {
+  font-family: $main-regular;
+  .mainView__container {
+    max-width: $container-width;
+    height: calc(100vh - 130px);
+
+    .mainView__header {
+      color: $header-color;
+      display: block;
+      width: 100%;
+      font-size: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .mainView__castles--list {
+      background: $navbar-color;
+      margin: 0 20px;
+      border-radius: 5px;
+      padding: 10px;
+
+      .mainView__castle {
+        background: whitesmoke;
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+
+        .mainView__castle--name {
+          font-size: 18px;
+          display: block;
+          text-align: center;
+          margin-bottom: 15px;
+        }
+        .mainView__castle--description {
+          font-size: 15px;
+          margin-bottom: 15px;
+        }
+        .mainView__castle--buttons {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .castle__button {
+            background: $header-color;
+            color: $font-color;
+            border: none;
+            border-radius: 5px;
+            height: 30px;
+            width: 50px;
+          }
+          .button__add {
+            margin-right: 10px;
+          }
+        }
+      }
+      .mainView__castle:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
