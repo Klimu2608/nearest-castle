@@ -1,0 +1,15 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+@import "../../styles/fonts";
+
+.userList {
+  width: 100%;
+  height: calc(100% - 130px);
+  background-color: $background-color;
+
+  .userList__container {
+    max-width: $container-width;
+    height: 100%;
+    width: 100%;
+  }
+}

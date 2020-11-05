@@ -40,12 +40,15 @@ export const Header = ({formName}) => {
                         <div className="header__logo__castle"></div>
                         <span>Castle</span>
                     </Link>
-                    {formName === "" ? null : <span className="header__username">Hi, {formName}</span>}
+                    {formName === "" ? null :
+                        <span className="header__username">Hi, {formName}
+                            <div>What would you like to visit today?</div>
+                        </span>}
                     <button onClick={handleClickMenu} className="header__menu__button"/>
                     <nav className="header__nav--mobile hidden">
-                        <Link to="/main" className="header__btn--mobile">Main</Link>
-                        <Link to="/all" className="header__btn--mobile">All</Link>
-                        <Link to="/my" className="header__btn--mobile">My</Link>
+                        <Link onClick={handleClickMenu} to="/main" className="header__btn--mobile">Main</Link>
+                        <Link onClick={handleClickMenu} to="/all" className="header__btn--mobile">All</Link>
+                        <Link onClick={handleClickMenu} to="/my" className="header__btn--mobile">My</Link>
                     </nav>
                 </div>
             </header>

@@ -1,0 +1,15 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+@import "../../styles/fonts";
+
+.contact {
+  width: 100%;
+  height: calc(100% - 130px);
+
+  .contact__container {
+    max-width: $container-width;
+    height: 100%;
+    width: 100%;
+    background-color: $background-color;
+  }
+}

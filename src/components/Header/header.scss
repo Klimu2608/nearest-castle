@@ -55,6 +55,10 @@
       line-height: 30px;
       color: $header-color;
       padding-left: 10px;
+
+      div {
+        text-align: center;
+      }
     }
 
     .header__menu__button {
@@ -80,11 +84,6 @@
       background-color: $navbar-color;
       z-index: 100;
 
-      .router__container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-
         .header__btn--mobile {
           width: 100%;
           height: 70px;
@@ -101,7 +100,6 @@
         :active {
           color: tomato;
         }
-      }
     }
     .hidden {
       display: none;

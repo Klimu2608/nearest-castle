@@ -1,34 +1,40 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./allList.scss";
+import {useHistory} from 'react-router-dom';
+import firebase from "../../firebase";
 
 export const AllList = () => {
-    const [castles, setCastles] = useState([
-        {
-            name: "Zamek1",
-            description: "Fajny zamek adasdf asdfas dfasdf asdfas dfasdf asdf asdfa sdfasdf asdfas df sadf asdf asdf asdf.",
-        },
-        {
-            name: "Zamek2",
-            description: "Też fajny zamek ono n ojn non noj i ji bu uv y vu hhbuh buhbv uvuvh "
-        }
-    ]);
+    const [castles, setCastles] = useState([]);
+
+    const history = useHistory();
+
+    const handleMore = () => {
+        let path = "/castle/:id";
+        history.push(path);
+    }
+
+    useEffect(() => {
+
+        const db = firebase.database();
+        const rootRef = db.ref("nearest-castle");
+        rootRef.on("value", snap => {
+            console.log(snap.val());
+        });
+
+    }, [])
 
     return (
         <>
-            <section className="mainView">
-                <div className="mainView__container">
-                    <span className="mainView__header">What would you like to visit today?</span>
-                    <ul className="mainView__castles--list">
-                        {castles.map((castle, i) =>
-                            <li className="mainView__castle" key={i}>
-                                <span className="mainView__castle--name">{castle.name}</span>
-                                <img className="mainView__castle--image" src="../../images/bolkow-1.jpg"/>
-                                <p className="mainView__castle--description">{castle.description}</p>
-                                <div className="mainView__castle--buttons">
-                                    <button className="castle__button button__add">+</button>
-                                    <button className="castle__button button__more">info</button>
-                                </div>
-                            </li>)}
+            <section className="allList">
+                <div className="allList__container">
+                    <ul className="allList__castles--list">
+                        {castles.map((castle) =>
+                            <li className="allList__castle" key={castle.id}>
+                                <span className="allList__castle--name">{castle.name}</span>
+                                <p className="allList__castle--description">{castle.description.short}</p>
+                                <button onClick={handleMore} className="castle__more">more</button>
+                            </li>)
+                        }
                     </ul>
                 </div>
             </section>

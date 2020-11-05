@@ -13,14 +13,14 @@
     width: 80%;
     margin: 0 auto;
     z-index: 0;
-    
+
     .form__hello {
       font-size: 3rem;
       color: tomato;
       margin-top: 50px;
       margin-bottom: 30px;
     }
-    
+
     .form__text {
       font-size: 17px;
       text-align: center;
@@ -36,12 +36,14 @@
       border-radius: 3px;
 
     }
+
     .form__input__name::placeholder {
       color: $navbar-color;
       opacity: 0.5;
       text-align: center;
       z-index: -1;
     }
+
     .form__checkbox {
       margin-bottom: 20px;
       display: flex;
@@ -61,7 +63,8 @@
         margin-right: 10px;
       }
     }
-    .form__link {
+
+    .form__btn {
       width: 150px;
       height: 40px;
       margin-top: 40px;
@@ -72,14 +75,9 @@
       font-family: $main-regular;
       font-weight: bold;
       color: $header-color;
-
-      .form__btn {
-        height: 100%;
-        width: 100%;
-        background: tomato;
-        border: 1px solid $header-color;
-        border-radius: 5px;
-      }
+      background: tomato;
+      border: 1px solid $header-color;
+      border-radius: 5px;
     }
   }
 }
@@ -90,15 +88,19 @@
       .form__hello {
         margin-bottom: 40px;
       }
+
       .form__text {
         margin-bottom: 30px;
       }
+
       .form__input__name {
         margin-bottom: 30px;
       }
+
       .form__checkbox {
         cursor: pointer;
       }
+
       .form__btn {
         cursor: pointer;
       }
