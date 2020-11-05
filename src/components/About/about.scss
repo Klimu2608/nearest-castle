@@ -4,12 +4,39 @@
 
 .about {
   width: 100%;
-  height: calc(100% - 130px);
+  height: calc(100vh - 130px);
 
   .about__container {
-    max-width: $container-width;
+    font-family: $main-regular;
+    max-width: 700px;
+    margin: 0 auto;
     height: 100%;
     width: 100%;
     background-color: $background-color;
+
+    .about__name {
+      background: $background-color;
+      line-height: 30px;
+      font-size: 18px;
+      color: $header-color;
+      padding-left: 20px;
+      padding-top: 10px;
+    }
+
+    .about__text {
+      display: block;
+      text-align: center;
+      padding-top: 120px;
+      font-size: 20px;
+      color: $header-color;
+      margin: 0 20px;
+      line-height: 30px;
+    }
+  }
+}
+
+@include tablet {
+  .about__name {
+    display: none;
   }
 }

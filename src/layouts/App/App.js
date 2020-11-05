@@ -6,7 +6,6 @@ import {Header} from "../../components/Header/header";
 import {Form} from "../../components/Form/form";
 import {Footer} from "../../components/Footer/footer";
 import {UserList} from "../../components/UserList/userList";
-import {SingleRecord} from "../../components/SingleRecord/singleRecord";
 import {AllList} from "../../components/AllList/allList";
 import {Contact} from "../../components/Contact/contact";
 import {About} from "../../components/About/about";
@@ -32,11 +31,24 @@ function App() {
                                />
                            }
                     />
-                    <Route path="/all" component={AllList}/>
+                    <Route path="/all"
+                           render={(props) =>
+                               <AllList {...props}
+                                        formName={userName}
+                               />
+                           }
+
+                    />
                     <Route path="/my" component={UserList}/>
-                    <Route path="/about" component={About}/>
+                    <Route path="/about"
+                           component={(props) =>
+                               <About {...props}
+                                      formName={userName}
+                               />
+                           }
+
+                    />
                     <Route path="/contact" component={Contact}/>
-                    <Route path="/castle/:id" component={SingleRecord}/>
                 </Switch>
                 <Footer/>
             </Router>

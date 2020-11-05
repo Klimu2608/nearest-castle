@@ -14,9 +14,7 @@
   .footer__container {
     max-width: $container-width;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: right;
     height: 100%;
 
     .footer__text {
@@ -24,44 +22,6 @@
       font-size: 10px;
       margin-right: 10px;
       color: $font-color;
-      text-align: right;
-    }
-
-    .footer__nav {
-      height: 100%;
-      display: flex;
-
-      .footer__link {
-        text-transform: uppercase;
-        text-decoration: none;
-        font-family: $main-regular;
-        color: $font-color;
-        box-sizing: border-box;
-        display: block;
-        width: auto;
-        height: 100%;
-        border: none;
-        background-color: transparent;
-        margin-left: 15px;
-        font-size: 12px;
-      }
-
-      .footer__link:active {
-        color: tomato;
-      }
-    }
-  }
-}
-
-@include desktop {
-  .footer {
-    .footer__container {
-      .footer__nav {
-        .footer__link:hover {
-          color: tomato;
-          cursor: pointer;
-        }
-      }
     }
   }
 }

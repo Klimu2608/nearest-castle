@@ -4,10 +4,36 @@
 
 .allList {
   font-family: $main-regular;
+  z-index: -1;
+
   .allList__container {
     max-width: $container-width;
-    height: 100%;
-    padding-top: 80px;
+    height: calc(100% - 130px);
+    padding-top: 90px;
+    padding-bottom: 60px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+
+    .allList__username__container {
+      height: 70px;
+      width: 100%;
+      background: $background-color;
+      line-height: 30px;
+      color: $header-color;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 80px;
+
+      .username__name {
+        padding-left: 20px;
+      }
+      .username__question {
+        display: block;
+        text-align: center;
+      }
+    }
 
     .allList__castles--list {
       background: $navbar-color;
@@ -20,38 +46,99 @@
         padding: 5px;
         border-radius: 5px;
         margin-bottom: 10px;
+        
+        .allList__castle__img {
+          display: block;
+          margin: 10px auto;
+          height: 150px;
+          width: 300px;
+          object-fit: cover;
+        }
 
         .allList__castle--name {
-          font-size: 18px;
+          font-size: 20px;
           display: block;
           text-align: center;
-          margin-bottom: 15px;
+          margin: 15px 0;
+          color: $header-color;
         }
+
         .allList__castle--description {
           font-size: 15px;
           margin-bottom: 15px;
+          text-align: justify;
+          padding: 0 10px;
         }
-        .allList__castle--buttons {
+
+        .allList__btn__container {
           display: flex;
           justify-content: center;
           align-items: center;
 
-          .castle__button {
-            background: $header-color;
-            color: $font-color;
-            border: none;
+          .allList__btn {
+            width: 150px;
+            height: 40px;
+            font-size: 16px;
+            margin: 10px 0;
             border-radius: 5px;
-            height: 30px;
-            width: 50px;
-          }
-          .button__add {
-            margin-right: 10px;
+            border: none;
+            background-color: tomato;
           }
         }
       }
-      .allList__castle:last-child {
-        margin-bottom: 0;
+    }
+
+    .allList__castle:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include tablet {
+  .allList {
+    .allList__container {
+      .allList__username__container {
+        .username__name {
+          display: none;
+        }
+
+        .username__question {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          max-width: $container-width;
+          line-height: 30px;
+          font-size: 24px;
+          margin: auto 0;
+        }
+      }
+      .allList__castles--list {
+        padding: 20px;
+        .allList__castle {
+          padding: 15px;
+          margin-bottom: 20px;
+          .allList__castle__img {
+            width: 800px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+          .allList__castle--name {
+            font-size: 35px;
+          }
+          .allList__castle--description {
+            font-size: 18px;
+            line-height: 22px;
+          }
+          .allList__btn:hover {
+            cursor: pointer;
+          }
+        }
+        .allList__castle:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }
+
 }

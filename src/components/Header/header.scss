@@ -1,4 +1,3 @@
-@import "../../styles/reset";
 @import "../../styles/mixins";
 @import "../../styles/fonts";
 @import "../../styles/variables";
@@ -11,6 +10,7 @@
   position: sticky;
   top: 0;
   font-family: $main-regular;
+  z-index: 1;
 
   .header__container {
     height: 100%;
@@ -45,22 +45,6 @@
       }
     }
 
-    .header__username {
-      display: block;
-      font-size: 1.1em;
-      position: absolute;
-      top: 100%;
-      width: 100%;
-      background: $background-color;
-      line-height: 30px;
-      color: $header-color;
-      padding-left: 10px;
-
-      div {
-        text-align: center;
-      }
-    }
-
     .header__menu__button {
       background-image: url("../../icons/menu.svg");
       background-repeat: no-repeat;
@@ -84,23 +68,25 @@
       background-color: $navbar-color;
       z-index: 100;
 
-        .header__btn--mobile {
-          width: 100%;
-          height: 70px;
-          line-height: 70px;
-          text-transform: uppercase;
-          text-align: center;
-          background: $navbar-color;
-          border: none;
-          border-bottom: 1px solid $header-color;
-          color: $font-color;
-          font-size: 1.2em;
-          text-decoration: none;
-        }
-        :active {
-          color: tomato;
-        }
+      .header__btn--mobile {
+        width: 100%;
+        height: 70px;
+        line-height: 70px;
+        text-transform: uppercase;
+        text-align: center;
+        background: $navbar-color;
+        border: none;
+        border-bottom: 1px solid $header-color;
+        color: $font-color;
+        font-size: 1.2em;
+        text-decoration: none;
+      }
+
+      :active {
+        color: tomato;
+      }
     }
+
     .hidden {
       display: none;
     }
@@ -118,84 +104,25 @@
         flex-grow: 1;
         margin-right: 10px;
 
-        .router__container {
-          display: flex;
-          height: 100%;
-
-          .header__nav__link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-transform: uppercase;
-            color: $font-color;
-            font-size: 1em;
-            width: 70px;
-            height: 100%;
-            border: none;
-            background-color: transparent;
-            align-self: flex-end;
-          }
-          .header__nav__link:active {
-            color: tomato;
-          }
-        }
-      }
-
-      .header__user {
-        display: flex;
-        align-items: center;
-        height: 100%;
-        text-decoration: none;
-        margin: 0 20px;
-        color: $font-color;
-
-        .header__user__icon {
-          height: 30px;
-          width: 30px;
-          background-image: url("../../icons/user.svg");
-          background-position: center;
-          background-size: cover;
-          background-color: $background-color;
-          border-radius: 50%;
-        }
-        .header__user__name {
-          display: block;
-          font-size: 1.1rem;
-          margin: 0 15px;
-        }
-      }
-    }
-  }
-}
-
-@include desktop {
-  .header {
-    .header__container {
-      .header__nav {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        margin-right: 10px;
-
         .header__nav__link {
-          text-transform: uppercase;
-          text-decoration: none;
           display: flex;
           justify-content: center;
           align-items: center;
-          box-sizing: border-box;
-          line-height: 100%;
+          text-transform: uppercase;
+          text-decoration: none;
           color: $font-color;
-          width: 70px;
+          font-size: 1em;
+          width: 80px;
           height: 100%;
           border: none;
           background-color: transparent;
+          align-self: flex-end;
+          margin-left: 20px;
         }
-
         .header__nav__link:hover {
-          border-bottom: 3px solid tomato;
           color: tomato;
-          cursor: pointer;
+          border-bottom: 3px solid tomato;
+          height: calc(100% - 5px);
         }
       }
 

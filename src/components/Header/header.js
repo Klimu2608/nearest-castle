@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "./header.scss";
 import {Link} from "react-router-dom";
 
@@ -14,15 +14,16 @@ export const Header = ({formName}) => {
         return (
             <header className="header">
                 <div className="header__container">
-                    <Link className="header__logo" to="/main">
+                    <Link className="header__logo" to="/all">
                         <span>Nearest</span>
                         <div className="header__logo__castle"></div>
                         <span>Castle</span>
                     </Link>
                     <nav className="header__nav">
-                        <Link to="/main" className="header__nav__link">main</Link>
-                        <Link to="/all" className="header__nav__link">all</Link>
+                        <Link to="/all" className="header__nav__link">castles</Link>
                         <Link to="/my" className="header__nav__link">my</Link>
+                        <Link to="/contact" className="header__nav__link">contact</Link>
+                        <Link to="/about" className="header__nav__link">about</Link>
                     </nav>
                     <Link className="header__user" to="/my">
                         <div className="header__user__icon"></div>
@@ -35,20 +36,17 @@ export const Header = ({formName}) => {
         return (
             <header className="header">
                 <div className="header__container">
-                    <Link className="header__logo" to="/main">
+                    <Link className="header__logo" to="/all">
                         <span>Nearest</span>
                         <div className="header__logo__castle"></div>
                         <span>Castle</span>
                     </Link>
-                    {formName === "" ? null :
-                        <span className="header__username">Hi, {formName}
-                            <div>What would you like to visit today?</div>
-                        </span>}
                     <button onClick={handleClickMenu} className="header__menu__button"/>
                     <nav className="header__nav--mobile hidden">
-                        <Link onClick={handleClickMenu} to="/main" className="header__btn--mobile">Main</Link>
-                        <Link onClick={handleClickMenu} to="/all" className="header__btn--mobile">All</Link>
+                        <Link onClick={handleClickMenu} to="/all" className="header__btn--mobile">Castles</Link>
                         <Link onClick={handleClickMenu} to="/my" className="header__btn--mobile">My</Link>
+                        <Link onClick={handleClickMenu} to="/contact" className="header__btn--mobile">Contact</Link>
+                        <Link onClick={handleClickMenu} to="/about" className="header__btn--mobile">About</Link>
                     </nav>
                 </div>
             </header>

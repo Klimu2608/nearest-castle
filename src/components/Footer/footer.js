@@ -7,10 +7,6 @@ export const Footer = () => {
         <>
             <footer className="footer">
                 <div className="footer__container container">
-                    <nav className="footer__nav">
-                        <Link to="/contact" className="footer__link">Contact us</Link>
-                        <Link to="/about" className="footer__link">About</Link>
-                    </nav>
                     <p className="footer__text">Copyright by Jakub Klimczak</p>
                 </div>
             </footer>
