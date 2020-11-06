@@ -3,13 +3,14 @@ import "./userList.scss";
 
 export const UserList = ({formName, onRemove, userCastles, images}) => {
 
+    const width = window.innerWidth;
 
     if (userCastles.length === 0) {
         return (
           <>
               <section className="userList">
                   <div className="userList__container">
-                      {formName === "" ? null :
+                      {(formName === "" || width > 768) ? null :
                           <div className="userList__username__container">
                               <span className="username__name">Hi, {formName}</span>
                           </div>
@@ -28,7 +29,7 @@ export const UserList = ({formName, onRemove, userCastles, images}) => {
             <>
                 <section className="userList">
                     <div className="userList__container">
-                        {formName === "" ? null :
+                        {(formName === "" || width > 768) ? null :
                             <div className="userList__username__container">
                                 <span className="username__name">Hi, {formName}</span>
                                 <span className="username__question">Your castles to visit:</span>

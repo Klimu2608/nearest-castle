@@ -122,7 +122,13 @@ function App() {
                                />
                            }
                     />
-                    <Route path="/contact" component={Contact}/>
+                    <Route path="/contact"
+                           render={(props) =>
+                               <Contact {...props}
+                                        formName={userName}
+                               />
+                           }
+                    />
                 </Switch>
                 <Footer/>
             </Router>

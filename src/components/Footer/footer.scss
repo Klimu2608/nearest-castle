@@ -19,9 +19,19 @@
 
     .footer__text {
       font-family: $main-regular;
-      font-size: 10px;
+      font-size: 12px;
       margin-right: 10px;
       color: $font-color;
+    }
+  }
+}
+
+@include tablet {
+  .footer {
+    .footer__container {
+      .footer__text {
+        font-size: 13px;
+      }
     }
   }
 }

@@ -13,6 +13,8 @@
     height: 100%;
     width: 100%;
     background-color: $background-color;
+    display: flex;
+    flex-direction: column;
 
     .about__name {
       background: $background-color;
@@ -22,12 +24,16 @@
       padding-left: 20px;
       padding-top: 10px;
     }
-
+    .about__header {
+      margin-top: 80px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 24px;
+    }
     .about__text {
       display: block;
       text-align: center;
-      padding-top: 120px;
-      font-size: 20px;
+      font-size: 18px;
       color: $header-color;
       margin: 0 20px;
       line-height: 30px;

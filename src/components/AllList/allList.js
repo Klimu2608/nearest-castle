@@ -3,12 +3,13 @@ import "./allList.scss";
 
 
 export const AllList = ({formName, images, allCastles, onAdd}) => {
+    const width = window.innerWidth;
 
     return (
         <>
             <section className="allList">
                 <div className="allList__container">
-                    {formName === "" ? null :
+                    {(formName === "" || width > 768) ? null :
                         <div className="allList__username__container">
                             <span className="username__name">Hi, {formName}</span>
                             <span className="username__question">What would you like to visit today?</span>

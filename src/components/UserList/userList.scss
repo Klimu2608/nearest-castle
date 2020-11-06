@@ -117,6 +117,9 @@
 @include tablet {
   .userList {
     .userList__container {
+      .userList__empty {
+        height: 516px;
+      }
       .userList__username__container {
         .username__name {
           display: none;

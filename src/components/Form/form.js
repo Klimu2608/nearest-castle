@@ -29,7 +29,7 @@ export const Form = ({onDone}) => {
                         <p className="form__text">Type your name to continue</p>
                         <input value={name} onChange={e => setName(e.target.value)} className="form__input__name"
                                type="text" placeholder="Type your name here"/>
-                        <button className="form__btn">Submit</button>
+                        <button className="form__btn">Ok</button>
                     </div>
                 </form>
             </div>

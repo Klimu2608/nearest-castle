@@ -4,12 +4,103 @@
 
 .contact {
   width: 100%;
-  height: calc(100% - 130px);
+  height: calc(100vh - 130px);
+  font-family: $main-regular;
+  box-sizing: border-box;
 
   .contact__container {
     max-width: $container-width;
     height: 100%;
     width: 100%;
     background-color: $background-color;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+
+    .contact__username__container {
+      height: 70px;
+      width: 100%;
+      background: $background-color;
+      line-height: 30px;
+      color: $header-color;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 80px;
+      font-size: 18px;
+
+      .username__name {
+        padding-left: 20px;
+      }
+    }
+    .contact__header {
+      margin-top: 80px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 22px;
+      width: 100%;
+    }
+    .contact__form__container {
+      max-width: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      
+      .contact__form {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .contact__name {
+          margin-top: 10px;
+          width: 270px;
+          height: 25px;
+          line-height: 25px;
+          border-radius: 3px;
+          border: 1px solid $header-color;
+          padding: 5px;
+          font-size: 16px;
+        }
+        .contact__email {
+          margin-top: 15px;
+          width: 270px;
+          height: 25px;
+          line-height: 25px;
+          border-radius: 3px;
+          border: 1px solid $header-color;
+          padding: 5px;
+          font-size: 16px;
+        }
+        .contact__message {
+          margin-top: 15px;
+          width: 270px;
+          height: 130px;
+          line-height: 25px;
+          border-radius: 3px;
+          border: 1px solid $header-color;
+          padding: 5px;
+          font-size: 16px;
+        }
+        .contact__submit {
+          margin-top: 40px;
+          width: 150px;
+          height: 40px;
+          font-size: 18px;
+          font-weight: bold;
+          border-radius: 5px;
+          background: tomato;
+          border: 1px solid $header-color;
+          
+        }
+      }
+    }
   }
+}
+
+@include tablet {
+
 }
