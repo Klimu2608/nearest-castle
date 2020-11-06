@@ -44,26 +44,23 @@ function App() {
         setUserName(name);
     }
 
-    const handleAdd = (castle) => {
+    const handleAdd = (castleName) => {
         const stateCopy = [...castles];
         console.log(stateCopy);
-        const preventDouble = userCastles.includes(castle);
-        console.log(preventDouble);
         stateCopy.forEach( elem => {
-            if (elem === castle && preventDouble === false) {
+            if (elem.name === castleName) {
                 setUserCastles(prev => [...prev, elem]);
-                console.log(userCastles);
                 setCastles(stateCopy.filter(prev => prev !== elem));
             }
         })
     }
 
-    const handleRemove = (castle) => {
+    const handleRemove = (castleName) => {
         const stateCopy = [...userCastles];
         stateCopy.forEach( elem => {
-            if (elem === castle) {
-                setUserCastles(stateCopy.filter(prev => prev !== elem));
+            if (elem.name === castleName) {
                 setCastles(prev => [...prev, elem]);
+                setUserCastles(stateCopy.filter(prev => prev !== elem));
             }
         })
     }

@@ -7,8 +7,7 @@ export const Header = ({formName}) => {
     const width = window.innerWidth;
     const history = useHistory();
 
-    const handleClickMenu = (e) => {
-        e.preventDefault();
+    const handleClickMenu = () => {
 
         if (formName !== "") {
             const headerNav = document.querySelector(".header__nav--mobile");

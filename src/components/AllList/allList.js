@@ -17,11 +17,13 @@ export const AllList = ({formName, images, allCastles, onAdd}) => {
                     <ul className="allList__castles--list">
                         {allCastles.map((castle, i) =>
                             <li className="allList__castle" key={parseInt(castle.id)}>
-                                <img className="allList__castle__img" src={images[i]}/>
+                                <img className="allList__castle__img"
+                                     src={images[parseInt(castle.id) -1]}
+                                />
                                 <span className="allList__castle--name">{castle.name}</span>
                                 <p className="allList__castle--description">{castle.description}</p>
                                 <div className="allList__btn__container">
-                                    <button onClick={() => onAdd()} className="allList__btn">Add to your list</button>
+                                    <button onClick={() => onAdd(castle.name)} className="allList__btn">Add to your list</button>
                                 </div>
                             </li>)
                         }
