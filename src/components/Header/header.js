@@ -1,31 +1,77 @@
 import React from "react";
 import "./header.scss";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import logo from "../../icons/castle2.svg"
 
 export const Header = ({formName}) => {
     const width = window.innerWidth;
+    const history = useHistory();
 
-    const handleClickMenu = () => {
-        const headerNav = document.querySelector(".header__nav--mobile");
-        headerNav.classList.toggle("hidden");
+    const handleClickMenu = (e) => {
+        e.preventDefault();
+
+        if (formName !== "") {
+            const headerNav = document.querySelector(".header__nav--mobile");
+            headerNav.classList.toggle("hidden");
+
+        } else {
+            alert("Type your name to continue");
+        }
+    }
+
+    const handleClickCastles = (e) => {
+        e.preventDefault();
+        if (formName !== "") {
+            let path = "/all";
+            history.push(path);
+        } else {
+            alert("Type your name to continue");
+        }
+    }
+    const handleClickMy = (e) => {
+        e.preventDefault();
+        if (formName !== "") {
+            let path = "/my";
+            history.push(path);
+        } else {
+            alert("Type your name to continue");
+        }
+    }
+    const handleClickContact = (e) => {
+        e.preventDefault();
+        if (formName !== "") {
+            let path = "/contact";
+            history.push(path);
+        } else {
+            alert("Type your name to continue");
+        }
+    }
+    const handleClickAbout = (e) => {
+        e.preventDefault();
+        if (formName !== "") {
+            let path = "/about";
+            history.push(path);
+        } else {
+            alert("Type your name to continue");
+        }
     }
 
     if (width > 768) {
         return (
             <header className="header">
                 <div className="header__container">
-                    <Link className="header__logo" to="/all">
+                    <Link onClick={handleClickCastles} className="header__logo" to="/all">
                         <span>Nearest</span>
-                        <div className="header__logo__castle"></div>
+                        <img src={logo} className="header__logo__castle"/>
                         <span>Castle</span>
                     </Link>
                     <nav className="header__nav">
-                        <Link to="/all" className="header__nav__link">castles</Link>
-                        <Link to="/my" className="header__nav__link">my</Link>
-                        <Link to="/contact" className="header__nav__link">contact</Link>
-                        <Link to="/about" className="header__nav__link">about</Link>
+                        <Link onClick={handleClickCastles} to="/all" className="header__nav__link">castles</Link>
+                        <Link onClick={handleClickMy} to="/my" className="header__nav__link">my</Link>
+                        <Link onClick={handleClickContact} to="/contact" className="header__nav__link">contact</Link>
+                        <Link onClick={handleClickAbout} to="/about" className="header__nav__link">about</Link>
                     </nav>
-                    <Link className="header__user" to="/my">
+                    <Link onClick={handleClickMy} className="header__user" to="/my">
                         <div className="header__user__icon"></div>
                         <span className="header__user__name">{formName}</span>
                     </Link>
@@ -36,9 +82,9 @@ export const Header = ({formName}) => {
         return (
             <header className="header">
                 <div className="header__container">
-                    <Link className="header__logo" to="/all">
+                    <Link onClick={handleClickCastles} className="header__logo" to="/all">
                         <span>Nearest</span>
-                        <div className="header__logo__castle"></div>
+                        <img src={logo} className="header__logo__castle"/>
                         <span>Castle</span>
                     </Link>
                     <button onClick={handleClickMenu} className="header__menu__button"/>

@@ -3,13 +3,141 @@
 @import "../../styles/fonts";
 
 .userList {
-  width: 100%;
-  height: calc(100% - 130px);
-  background-color: $background-color;
+  font-family: $main-regular;
+  z-index: -1;
 
   .userList__container {
     max-width: $container-width;
-    height: 100%;
-    width: 100%;
+    height: calc(100% - 130px);
+    padding-top: 90px;
+    padding-bottom: 60px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+
+    .userList__username__container {
+      height: 70px;
+      width: 100%;
+      background: $background-color;
+      line-height: 30px;
+      color: $header-color;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 80px;
+
+      .username__name {
+        padding-left: 20px;
+      }
+      .username__question {
+        display: block;
+        text-align: center;
+      }
+    }
+
+    .userList__castles--list {
+      background: $navbar-color;
+      margin: 0 20px;
+      border-radius: 5px;
+      padding: 10px;
+
+      .userList__castle {
+        background: whitesmoke;
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+
+        .userList__castle__img {
+          display: block;
+          margin: 10px auto;
+          height: 150px;
+          width: 300px;
+          object-fit: cover;
+        }
+
+        .userList__castle--name {
+          font-size: 20px;
+          display: block;
+          text-align: center;
+          margin: 15px 0;
+          color: $header-color;
+        }
+
+        .userList__castle--description {
+          font-size: 15px;
+          margin-bottom: 15px;
+          text-align: justify;
+          padding: 0 10px;
+        }
+
+        .userList__btn__container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .userList__btn {
+            width: 150px;
+            height: 40px;
+            font-size: 16px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            background-color: tomato;
+          }
+        }
+      }
+    }
+
+    .userList__castle:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include tablet {
+  .userList {
+    .userList__container {
+      .userList__username__container {
+        .username__name {
+          display: none;
+        }
+
+        .username__question {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          max-width: $container-width;
+          line-height: 30px;
+          font-size: 24px;
+          margin: auto 0;
+        }
+      }
+      .userList__castles--list {
+        padding: 20px;
+        .userList__castle {
+          padding: 15px;
+          margin-bottom: 20px;
+          .userList__castle__img {
+            width: 800px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+          .userList__castle--name {
+            font-size: 35px;
+          }
+          .userList__castle--description {
+            font-size: 18px;
+            line-height: 22px;
+          }
+          .userList__btn:hover {
+            cursor: pointer;
+          }
+        }
+        .userList__castle:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 }

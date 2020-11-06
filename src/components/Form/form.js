@@ -16,7 +16,7 @@ export const Form = ({onDone}) => {
             history.push(path);
 
         } else {
-            alert("Type your name and agree to use your location to continue");
+            alert("Type your name to continue");
         }
     }
 
