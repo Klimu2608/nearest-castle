@@ -1,0 +1,93 @@
+@import "../../styles/mixins";
+@import "../../styles/fonts";
+@import "../../styles/variables";
+
+.singleCastle {
+  font-family: $main-regular;
+  box-sizing: border-box;
+  color: $header-color;
+
+  .singleCastle__container {
+    max-width: $container-width;
+    height: calc(100% - 130px);
+    padding-top: 30px;
+    margin: 0 auto;
+
+    .singleCastle__username__container {
+      height: 30px;
+      width: 100%;
+      background: $background-color;
+      line-height: 30px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 80px;
+
+      .username__name {
+        padding-left: 20px;
+      }
+
+      .username__question {
+        display: block;
+        text-align: center;
+        color: $header-color;
+      }
+    }
+    .singleCastle__view {
+      width: 100%;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .singleCastle__view__container {
+        width: 80%;
+        margin: 20px auto;
+        display: block;
+        background: whitesmoke;
+        padding: 15px;
+        border-radius: 10px;
+
+        .singleCastle__view--pic {
+          border-radius: 10px;
+          width: 100%;
+        }
+      }
+      .singleCastle__view--title {
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+      .singleCastle__view--description {
+        width: 80%;
+        margin: 0 auto 10px;
+        display: block;
+        background: whitesmoke;
+        color: $header-color;
+        padding: 15px;
+        border-radius: 10px;
+        line-height: 22px;
+      }
+      .singleCastle__view--button {
+        width: 150px;
+        height: 40px;
+        font-size: 16px;
+        font-weight: bold;
+        color: $header-color;
+        margin: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: tomato;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .singleCastle__view--button:hover {
+    cursor: pointer;
+  }
+}

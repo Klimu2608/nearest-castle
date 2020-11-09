@@ -2,6 +2,7 @@ import './App.scss';
 import React, {useEffect, useState}             from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {createBrowserHistory as createHistory}  from "history";
+import ls                                       from "local-storage";
 import {Header}                                 from "../../components/Header/header";
 import {Form}                                   from "../../components/Form/form";
 import {Footer}                                 from "../../components/Footer/footer";
@@ -9,6 +10,7 @@ import {UserList}                               from "../../components/UserList/
 import {AllList}                                from "../../components/AllList/allList";
 import {Contact}                                from "../../components/Contact/contact";
 import {About}                                  from "../../components/About/about";
+import {Castle}                                 from "../../components/Castle/castle";
 import firebase                                 from "../../firebase";
 import bedzin                                   from "../../images/bedzin.jpeg";
 import bolkow                                   from "../../images/bolkow.jpg";
@@ -25,8 +27,11 @@ function App() {
     const [userName, setUserName] = useState("");
     const [castles, setCastles] = useState([]);
     const [userCastles, setUserCastles] = useState([]);
+    const [singleCastle, setSingleCastle] = useState({});
+    const [doubledCastle, setDoubledCastle] = useState(false);
 
     const history = createHistory();
+
     const images = [
         malbork,
         wawel,
@@ -46,11 +51,14 @@ function App() {
 
     const handleAdd = (castleName) => {
         const stateCopy = [...castles];
-        console.log(stateCopy);
         stateCopy.forEach( elem => {
-            if (elem.name === castleName) {
+            const checkDouble = userCastles.includes(elem);
+            if (elem.name === castleName && checkDouble === false) {
+                setDoubledCastle(false);
                 setUserCastles(prev => [...prev, elem]);
-                setCastles(stateCopy.filter(prev => prev !== elem));
+            }
+            if (checkDouble === true) {
+                setDoubledCastle(true);
             }
         })
     }
@@ -59,10 +67,13 @@ function App() {
         const stateCopy = [...userCastles];
         stateCopy.forEach( elem => {
             if (elem.name === castleName) {
-                setCastles(prev => [...prev, elem]);
                 setUserCastles(stateCopy.filter(prev => prev !== elem));
             }
         })
+    }
+
+    const handleMore = ({castle}) => {
+        setSingleCastle(castle);
     }
 
     useEffect(() => {
@@ -76,12 +87,22 @@ function App() {
                 newState.push({
                     id: dataVal.id,
                     name: dataVal.name,
-                    description: dataVal.description
+                    description: dataVal.description,
+                    long: dataVal.long
                 });
             });
             setCastles(newState);
         });
+        setUserName(ls.get("userName"));
+        setUserCastles(ls.get("userCastles"));
+        setSingleCastle(ls.get("singleCastle"));
     }, [])
+
+    useEffect(() => {
+        ls.set("userName", userName);
+        ls.set("userCastles", userCastles);
+        ls.set("singleCastle", singleCastle);
+    }, [userName, userCastles, singleCastle])
 
     return (
         <>
@@ -101,7 +122,10 @@ function App() {
                                         formName={userName}
                                         images={images}
                                         allCastles={castles}
+                                        userCastles={userCastles}
+                                        double={doubledCastle}
                                         onAdd={handleAdd}
+                                        onMore={handleMore}
                                />
                            }
                     />
@@ -109,9 +133,10 @@ function App() {
                            render={(props) =>
                                <UserList {...props}
                                          formName={userName}
-                                         onRemove={handleRemove}
                                          userCastles={userCastles}
                                          images={images}
+                                         onRemove={handleRemove}
+                                         onMore={handleMore}
                                />
                            }
                     />
@@ -126,6 +151,15 @@ function App() {
                            render={(props) =>
                                <Contact {...props}
                                         formName={userName}
+                               />
+                           }
+                    />
+                    <Route path={`/castle/${singleCastle.name}`}
+                           children={(props) =>
+                               <Castle {...props}
+                                       castle={singleCastle}
+                                       images={images}
+                                       formName={userName}
                                />
                            }
                     />

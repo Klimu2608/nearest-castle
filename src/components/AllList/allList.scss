@@ -4,7 +4,6 @@
 
 .allList {
   font-family: $main-regular;
-  z-index: -1;
 
   .allList__container {
     max-width: $container-width;
@@ -13,7 +12,6 @@
     padding-bottom: 60px;
     margin: 0 auto;
     overflow: hidden;
-    position: relative;
 
     .allList__username__container {
       height: 70px;
@@ -25,13 +23,48 @@
       flex-direction: column;
       position: fixed;
       top: 80px;
+      font-size: 18px;
 
       .username__name {
         padding-left: 20px;
+        opacity: 1;
       }
       .username__question {
         display: block;
         text-align: center;
+      }
+    }
+
+    .allList__popup {
+      width: 320px;
+      height: 180px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $header-color;
+      color: $font-color;
+      font-family: $main-regular;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+
+      .popup__text {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+      .popup__btn {
+        text-transform: uppercase;
+        border: 3px solid $navbar-color;
+        color: $font-color;
+        font-weight: bold;
+        padding: 10px;
+        background: $header-color;
+        border-radius: 5px;
       }
     }
 
@@ -45,7 +78,7 @@
         background: whitesmoke;
         padding: 5px;
         border-radius: 5px;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         
         .allList__castle__img {
           display: block;
@@ -61,6 +94,7 @@
           text-align: center;
           margin: 15px 0;
           color: $header-color;
+          font-weight: bold;
         }
 
         .allList__castle--description {
@@ -81,10 +115,14 @@
             font-size: 16px;
             font-weight: bold;
             color: $header-color;
-            margin: 10px 0;
+            margin: 10px;
             border-radius: 5px;
             border: none;
             background-color: tomato;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
           }
         }
       }
@@ -114,10 +152,20 @@
           margin: auto 0;
         }
       }
+      .allList__popup {
+        width: 500px;
+        height: 250px;
+        .popup__text {
+          font-size: 22px;
+        }
+        .popup__btn:hover {
+          cursor: pointer;
+        }
+      }
       .allList__castles--list {
         padding: 20px;
         .allList__castle {
-          padding: 15px;
+          padding: 50px 15px;
           margin-bottom: 20px;
           .allList__castle__img {
             width: 800px;
@@ -127,13 +175,19 @@
           }
           .allList__castle--name {
             font-size: 35px;
+            margin: 30px 0;
           }
           .allList__castle--description {
             font-size: 18px;
             line-height: 22px;
+            padding: 0 30px;
           }
-          .allList__btn:hover {
-            cursor: pointer;
+          .allList__btn__container {
+            margin-top: 30px;
+
+            .allList__btn:hover {
+              cursor: pointer;
+            }
           }
         }
         .allList__castle:last-child {

@@ -13,6 +13,7 @@
     "formik": "^2.2.1",
     "gatsby": "^2.24.91",
     "google-maps-react": "^2.0.6",
+    "local-storage": "^2.0.0",
     "mobx": "^6.0.2",
     "mobx-react": "^7.0.0",
     "node-sass": "^4.14.1",
@@ -22,6 +23,7 @@
     "react-geolocated": "^3.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "reactjs-popup": "^2.0.4",
     "web-vitals": "^0.2.4",
     "yup": "^0.29.3"
   },
@@ -50,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "firebase-admin": "^9.3.0"
+    "firebase-admin": "^9.3.0",
+    "history": "^5.0.0"
   }
 }

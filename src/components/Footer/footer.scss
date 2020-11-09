@@ -14,14 +14,30 @@
   .footer__container {
     max-width: $container-width;
     margin: 0 auto;
-    text-align: right;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .footer__text {
       font-family: $main-regular;
       font-size: 12px;
       margin-right: 10px;
       color: $font-color;
+    }
+    .footer__btn {
+      height: 60%;
+      text-transform: uppercase;
+      border: 3px solid $navbar-color;
+      color: $font-color;
+      font-weight: bold;
+      padding: 10px;
+      background: $header-color;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 20px;
     }
   }
 }
@@ -31,6 +47,9 @@
     .footer__container {
       .footer__text {
         font-size: 13px;
+      }
+      .footer__btn:hover {
+        cursor: pointer;
       }
     }
   }

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./contact.scss";
-import axios from "axios";
+import axios            from "axios";
 
 export const Contact = ({formName}) => {
     const [name, setName] = useState("");
