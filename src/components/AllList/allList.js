@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
 import "./allList.scss";
 import "../../styles/_variables.scss";
 
 
-export const AllList = ({formName, images, allCastles, double, onAdd, onMore}) => {
-    const [popup, setPopup] = useState(false);
-    const [currentCastle, setCurrentCastle] = useState({});
+export const AllList = ({formName, images, allCastles, double, onAdd, onMore,
+                            popup, onPopup, currentCastle, onCurrentCastle}) => {
+
     const width = window.innerWidth;
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export const AllList = ({formName, images, allCastles, double, onAdd, onMore}) =
                                 <span className="popup__text">{currentCastle.name} already is on your list!</span>
                                 :
                                 <span className="popup__text">{currentCastle.name} was added to your list!</span>}
-                            <button onClick={() => setPopup(false)} className="popup__btn">close</button>
+                            <button onClick={() => onPopup(false)} className="popup__btn">close</button>
                         </div>
                     }
                     <ul className="allList__castles--list">
@@ -42,21 +42,21 @@ export const AllList = ({formName, images, allCastles, double, onAdd, onMore}) =
                             allCastles.map((castle) =>
                                 <li className="allList__castle" key={parseInt(castle.id)}>
                                     <img className="allList__castle__img"
-                                         src={images[parseInt(castle.id) - 1]}
+                                         src={images[parseInt(castle.id) - 1][0]}
                                          alt="castle-picture"/>
                                     <span className="allList__castle--name">{castle.name}</span>
                                     <p className="allList__castle--description">{castle.description}</p>
                                     <div className="allList__btn__container">
                                         <button onClick={() => {
                                             onAdd(castle.name);
-                                            setCurrentCastle(castle);
-                                            setPopup(true);
+                                            onCurrentCastle(castle);
+                                            onPopup(true);
                                         }}
                                                 className="allList__btn"
                                         >Add to your list
                                         </button>
                                         <Link to={`/castle/${castle.name}`}
-                                              onClick={() => onMore({castle})}
+                                              onClick={() => onMore(castle)}
                                               className="allList__btn"
                                         >More</Link>
                                     </div>

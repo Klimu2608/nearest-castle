@@ -3,7 +3,7 @@ import {useHistory} from "react-router-dom";
 import "./footer.scss";
 import ls from "local-storage";
 
-export const Footer = () => {
+export const Footer = ({onUserName}) => {
     const history = useHistory();
 
     const handleLogOut = () => {
@@ -11,6 +11,7 @@ export const Footer = () => {
         ls.set("userName", "");
         ls.set("userCastles", "");
         ls.set("singleCastle", "");
+        onUserName("");
     }
 
     return (

@@ -12,16 +12,7 @@ import {Contact}                                from "../../components/Contact/c
 import {About}                                  from "../../components/About/about";
 import {Castle}                                 from "../../components/Castle/castle";
 import firebase                                 from "../../firebase";
-import bedzin                                   from "../../images/bedzin.jpeg";
-import bolkow                                   from "../../images/bolkow.jpg";
-import checiny                                  from "../../images/checiny.jpg";
-import czersk                                   from "../../images/czersk.jpg";
-import czocha                                   from "../../images/czocha.jpg";
-import kwidzyn                                  from "../../images/kwidzyn.jpg";
-import lidzbark                                 from "../../images/lidzbark.jpeg";
-import malbork                                  from "../../images/malbork.jpg";
-import niedzica                                 from "../../images/niedzica.jpg";
-import wawel                                    from "../../images/wawel.jpg";
+import {images}                                 from "../../images";
 
 function App() {
     const [userName, setUserName] = useState("");
@@ -29,25 +20,10 @@ function App() {
     const [userCastles, setUserCastles] = useState([]);
     const [singleCastle, setSingleCastle] = useState({});
     const [doubledCastle, setDoubledCastle] = useState(false);
+    const [popup, setPopup] = useState(false);
+    const [currentCastle, setCurrentCastle] = useState({});
 
     const history = createHistory();
-
-    const images = [
-        malbork,
-        wawel,
-        kwidzyn,
-        niedzica,
-        bolkow,
-        bedzin,
-        checiny,
-        czersk,
-        czocha,
-        lidzbark,
-    ];
-
-    const handleName = (name) => {
-        setUserName(name);
-    }
 
     const handleAdd = (castleName) => {
         const stateCopy = [...castles];
@@ -70,10 +46,6 @@ function App() {
                 setUserCastles(stateCopy.filter(prev => prev !== elem));
             }
         })
-    }
-
-    const handleMore = ({castle}) => {
-        setSingleCastle(castle);
     }
 
     useEffect(() => {
@@ -112,7 +84,7 @@ function App() {
                     <Route exact path="/"
                            render={(props) =>
                                <Form {...props}
-                                     onDone={handleName}
+                                     onDone={setUserName}
                                />
                            }
                     />
@@ -122,10 +94,13 @@ function App() {
                                         formName={userName}
                                         images={images}
                                         allCastles={castles}
-                                        userCastles={userCastles}
                                         double={doubledCastle}
+                                        popup={popup}
+                                        onPopup={setPopup}
                                         onAdd={handleAdd}
-                                        onMore={handleMore}
+                                        onMore={setSingleCastle}
+                                        currentCastle={currentCastle}
+                                        onCurrentCastle={setCurrentCastle}
                                />
                            }
                     />
@@ -135,8 +110,12 @@ function App() {
                                          formName={userName}
                                          userCastles={userCastles}
                                          images={images}
+                                         popup={popup}
+                                         onPopup={setPopup}
                                          onRemove={handleRemove}
-                                         onMore={handleMore}
+                                         onMore={setSingleCastle}
+                                         currentCastle={currentCastle}
+                                         onCurrentCastle={setCurrentCastle}
                                />
                            }
                     />
@@ -164,7 +143,7 @@ function App() {
                            }
                     />
                 </Switch>
-                <Footer/>
+                <Footer onUserName={setUserName}/>
             </Router>
         </>
     );
