@@ -10,7 +10,7 @@
   position: sticky;
   top: 0;
   font-family: $main-regular;
-  z-index: 1;
+  z-index: 2;
 
   .header__container {
     height: 100%;
@@ -103,6 +103,7 @@
         justify-content: flex-end;
         flex-grow: 1;
         margin-right: 10px;
+        letter-spacing: 1px;
 
         .header__nav__link {
           display: flex;

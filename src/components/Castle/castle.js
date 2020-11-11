@@ -1,20 +1,41 @@
-import React, {useEffect} from "react";
-import {useParams, Link, useHistory} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {useParams, useHistory} from "react-router-dom";
 import prev from "../../icons/prev.svg";
 import next from "../../icons/next.svg";
 import "./castle.scss";
 
 export const Castle = ({castle, images, formName}) => {
+    const [currentSlide, setCurrentSlide] = useState(images[parseInt(castle.id) - 1][0]);
     let {} = useParams();
     const width = window.innerWidth;
     const history = useHistory();
 
     useEffect(() => {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }, []);
 
     const handleClickBack = () => {
         history.goBack()
+    }
+
+    const handleClickNext = () => {
+        if (currentSlide === images[parseInt(castle.id) - 1][2]) {
+            setCurrentSlide(images[parseInt(castle.id) - 1][0]);
+        } else if (currentSlide === images[parseInt(castle.id) - 1][0]) {
+            setCurrentSlide(images[parseInt(castle.id) - 1][1]);
+        } else {
+            setCurrentSlide(images[parseInt(castle.id) - 1][2]);
+        }
+    }
+
+    const handleClickPrev = () => {
+        if (currentSlide === images[parseInt(castle.id) - 1][0]) {
+            setCurrentSlide(images[parseInt(castle.id) - 1][2]);
+        } else if (currentSlide === images[parseInt(castle.id) - 1][2]) {
+            setCurrentSlide(images[parseInt(castle.id) - 1][1]);
+        } else {
+            setCurrentSlide(images[parseInt(castle.id) - 1][0]);
+        }
     }
 
     return (
@@ -28,31 +49,18 @@ export const Castle = ({castle, images, formName}) => {
                     }
                     <div className="singleCastle__view">
                         <div className="singleCastle__view__container">
-                            <button className="carousel--btn btn__prev">
+                            <button onClick={handleClickPrev} className="carousel__btn btn__prev">
                                 <img className="prev__icon icon" src={prev} alt="prev-button"/>
                             </button>
                             <div className="carousel__container">
-                                <ul className="carousel__track">
-                                    <li className="track__slide current__slide">
-                                        <img className="track--pic"
-                                             src={images[parseInt(castle.id) - 1][0]}
-                                             alt="castle-pic1"/>
-                                    </li>
-                                    <li className="track__slide">
-                                        <img className="track--pic"
-                                             src={images[parseInt(castle.id) - 1][1]}
-                                             alt="castle-pic2"
-                                        />
-                                    </li>
-                                    <li className="track__slide">
-                                        <img className="track--pic"
-                                             src={images[parseInt(castle.id) - 1][2]}
-                                             alt="castle-pic3"
-                                        />
-                                    </li>
-                                </ul>
+                                <div className="carousel__slide">
+                                    <img className="carousel--pic"
+                                         src={currentSlide}
+                                         alt="castle-pic1"
+                                    />
+                                </div>
                             </div>
-                            <button className="carousel--btn btn__next">
+                            <button onClick={handleClickNext} className="carousel__btn btn__next">
                                 <img className="next__icon icon" src={next} alt="next-button"/>
                             </button>
                         </div>
