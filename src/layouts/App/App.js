@@ -50,20 +50,22 @@ function App() {
         localStorage.setItem("userCastles", JSON.stringify(userCastles));
     }, [userName, userCastles]);
 
-    const handleAdd = (castleID) => {
-        const stateCopy = [...castles];
-        const userCopy = [];
-        userCopy.push(...userCastles);
-        stateCopy.forEach(elem => {
-            const checkDouble = userCopy.includes(elem);
-            if (elem.id === castleID && checkDouble === false) {
-                setDoubledCastle(false);
-                setUserCastles(prev => [...prev, elem]);
-            }
-            if (checkDouble === true) {
-                setDoubledCastle(true);
-            }
-        });
+    const handleAdd = (castle) => {
+        if (Array.isArray(userCastles) === false || userCastles.length === 0) {
+            setUserCastles([castle]);
+        } else {
+            const stateCopy = [...castles];
+            stateCopy.forEach(elem => {
+                if (elem === castle) {
+                    const checkDouble = userCastles.includes(elem);
+                    if (checkDouble === true) {
+                        setDoubledCastle(true);
+                    } else {
+                        setUserCastles(prev => [...prev, elem]);
+                    }
+                }
+            });
+        }
     }
 
     const handleRemove = (castleID) => {
@@ -80,11 +82,12 @@ function App() {
             <Router history={history}>
                 <Header formName={userName}/>
                 <Switch className="router__container">
-                    <Route exact path="/" >
-                        {userName === "" ?
-                            <Form onDone={setUserName}/>
-                            :
-                            <Redirect to="all"/>
+                    <Route exact path="/">
+                        {
+                            Boolean(userName) === false ?
+                                <Form onDone={setUserName}/>
+                                :
+                                <Redirect to="all"/>
                         }
                     </Route>
                     <Route path="/all"
@@ -94,6 +97,7 @@ function App() {
                                         images={images}
                                         allCastles={castles}
                                         double={doubledCastle}
+                                        onDouble={setDoubledCastle}
                                         popup={popup}
                                         onPopup={setPopup}
                                         onAdd={handleAdd}

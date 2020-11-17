@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import "./allList.scss";
 import "../../styles/_variables.scss";
 
-export const AllList = ({formName, images, allCastles, double, onAdd, onMore,
+export const AllList = ({formName, images, allCastles, double, onDouble, onAdd, onMore,
                             popup, onPopup, currentCastle, onCurrentCastle }) => {
 
     const width = window.innerWidth;
@@ -32,8 +32,13 @@ export const AllList = ({formName, images, allCastles, double, onAdd, onMore,
                             {double === true ?
                                 <span className="popup__text">{currentCastle.name} already is on your list!</span>
                                 :
-                                <span className="popup__text">{currentCastle.name} was added to your list!</span>}
-                            <button onClick={() => onPopup(false)} className="popup__btn">close</button>
+                                <span className="popup__text">{currentCastle.name} was added to your list!</span>
+                            }
+                            <button onClick={() => {onPopup(false); onDouble(false);}}
+                                    className="popup__btn"
+                            >
+                                close
+                            </button>
                         </div>
                     }
                     <ul className="allList__castles--list">
@@ -47,7 +52,7 @@ export const AllList = ({formName, images, allCastles, double, onAdd, onMore,
                                     <p className="allList__castle--description">{castle.description}</p>
                                     <div className="allList__btn__container">
                                         <button onClick={() => {
-                                            onAdd(castle.id);
+                                            onAdd(castle);
                                             onCurrentCastle(castle);
                                             onPopup(true);
                                         }}
