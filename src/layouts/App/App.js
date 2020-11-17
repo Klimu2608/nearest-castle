@@ -23,6 +23,7 @@ function App() {
     const [currentCastle, setCurrentCastle] = useState({});
 
     const history = createHistory();
+    console.log(userCastles);
 
     useEffect(() => {
 
@@ -52,7 +53,8 @@ function App() {
 
     const handleAdd = (castleID) => {
         const stateCopy = [...castles];
-        const userCopy = [...userCastles];
+        const userCopy = [];
+        userCopy.push(...userCastles);
         stateCopy.forEach(elem => {
             const checkDouble = userCopy.includes(elem);
             if (elem.id === castleID && checkDouble === false) {
