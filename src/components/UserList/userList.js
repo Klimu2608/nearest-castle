@@ -59,7 +59,7 @@ export const UserList = ({formName, onRemove, onMore, userCastles, images, popup
                                 <li className="userList__castle" key={parseInt(castle.id)}>
                                     <img className="userList__castle__img"
                                          src={images[parseInt(castle.id) -1][0]}
-                                     alt="castle-picture"/>
+                                     alt="castle"/>
                                     <span className="userList__castle--name">{castle.name}</span>
                                     <p className="userList__castle--description">{castle.description}</p>
                                     <div className="userList__btn__container">

@@ -43,7 +43,7 @@ export const AllList = ({formName, images, allCastles, double, onAdd, onMore,
                                 <li className="allList__castle" key={parseInt(castle.id)}>
                                     <img className="allList__castle__img"
                                          src={images[parseInt(castle.id) - 1][0]}
-                                         alt="castle-picture"/>
+                                         alt="castle"/>
                                     <span className="allList__castle--name">{castle.name}</span>
                                     <p className="allList__castle--description">{castle.description}</p>
                                     <div className="allList__btn__container">

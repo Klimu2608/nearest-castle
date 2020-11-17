@@ -61,7 +61,7 @@ export const Header = ({formName}) => {
                 <div className="header__container">
                     <Link onClick={handleClickCastles} className="header__logo" to="/all">
                         <span>Nearest</span>
-                        <img src={logo} className="header__logo__castle"/>
+                        <img src={logo} className="header__logo__castle" alt="logo"/>
                         <span>Castle</span>
                     </Link>
                     <nav className="header__nav">
@@ -83,7 +83,7 @@ export const Header = ({formName}) => {
                 <div className="header__container">
                     <Link onClick={handleClickCastles} className="header__logo" to="/all">
                         <span>Nearest</span>
-                        <img src={logo} className="header__logo__castle"/>
+                        <img src={logo} className="header__logo__castle" alt="logo"/>
                         <span>Castle</span>
                     </Link>
                     <button onClick={handleClickMenu} className="header__menu__button"/>

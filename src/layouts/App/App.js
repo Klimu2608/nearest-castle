@@ -133,7 +133,7 @@ function App() {
                                />
                            }
                     />
-                    <Route path={`/castle/${singleCastle.name}`}
+                    <Route path={`/castle/:param`}
                            children={(props) =>
                                <Castle {...props}
                                        castle={singleCastle}

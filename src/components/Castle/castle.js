@@ -6,7 +6,7 @@ import "./castle.scss";
 
 export const Castle = ({castle, images, formName}) => {
     const [currentSlide, setCurrentSlide] = useState(images[parseInt(castle.id) - 1][0]);
-    let {} = useParams();
+    let { param } = useParams();
     const width = window.innerWidth;
     const history = useHistory();
 
@@ -56,15 +56,15 @@ export const Castle = ({castle, images, formName}) => {
                                 <div className="carousel__slide">
                                     <img className="carousel--pic"
                                          src={currentSlide}
-                                         alt="castle-pic1"
+                                         alt="castle"
                                     />
                                 </div>
                             </div>
                             <button onClick={handleClickNext} className="carousel__btn btn__next">
-                                <img className="next__icon icon" src={next} alt="next-button"/>
+                                <img className="next__icon icon" src={next} alt="button"/>
                             </button>
                         </div>
-                        <span className="singleCastle__view--title">{castle.name}</span>
+                        <span className="singleCastle__view--title">{param}</span>
                         <p className="singleCastle__view--description">{castle.long}</p>
                         <button onClick={handleClickBack} className="singleCastle__view--button">Back</button>
                     </div>
