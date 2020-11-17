@@ -1,18 +1,17 @@
-import './App.scss';
-import React, {useEffect, useState}             from "react";
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {createBrowserHistory as createHistory}  from "history";
-import ls                                       from "local-storage";
-import {Header}                                 from "../../components/Header/header";
-import {Form}                                   from "../../components/Form/form";
-import {Footer}                                 from "../../components/Footer/footer";
-import {UserList}                               from "../../components/UserList/userList";
-import {AllList}                                from "../../components/AllList/allList";
-import {Contact}                                from "../../components/Contact/contact";
-import {About}                                  from "../../components/About/about";
-import {Castle}                                 from "../../components/Castle/castle";
-import firebase                                 from "../../firebase";
-import {images}                                 from "../../images";
+import React, {useEffect, useState} from "react";
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {createBrowserHistory as createHistory} from "history";
+import {Header} from "../../components/Header/header";
+import {Form} from "../../components/Form/form";
+import {Footer} from "../../components/Footer/footer";
+import {UserList} from "../../components/UserList/userList";
+import {AllList} from "../../components/AllList/allList";
+import {Contact} from "../../components/Contact/contact";
+import {About} from "../../components/About/about";
+import {Castle} from "../../components/Castle/castle";
+import firebase from "../../firebase";
+import {images} from "../../images";
+import "./App.scss";
 
 function App() {
     const [userName, setUserName] = useState("");
@@ -25,34 +24,11 @@ function App() {
 
     const history = createHistory();
 
-    const handleAdd = (castleName) => {
-        const stateCopy = [...castles];
-        stateCopy.forEach( elem => {
-            const checkDouble = userCastles.includes(elem);
-            if (elem.name === castleName && checkDouble === false) {
-                setDoubledCastle(false);
-                setUserCastles(prev => [...prev, elem]);
-            }
-            if (checkDouble === true) {
-                setDoubledCastle(true);
-            }
-        })
-    }
-
-    const handleRemove = (castleName) => {
-        const stateCopy = [...userCastles];
-        stateCopy.forEach( elem => {
-            if (elem.name === castleName) {
-                setUserCastles(stateCopy.filter(prev => prev !== elem));
-            }
-        })
-    }
-
     useEffect(() => {
 
         const db = firebase.database();
         const rootRef = db.ref("castles");
-        rootRef.on("value", snap => {
+        rootRef.once("value").then(snap => {
             let newState = [];
             snap.forEach(data => {
                 const dataVal = data.val();
@@ -65,29 +41,51 @@ function App() {
             });
             setCastles(newState);
         });
-        setUserCastles(ls.get("userCastles"));
-        setSingleCastle(ls.get("singleCastle"));
-        setUserName(ls.get("userName"));
-    }, [])
+        setUserCastles(JSON.parse(localStorage.getItem("userCastles")));
+        setUserName(localStorage.getItem("userName"));
+    }, []);
 
     useEffect(() => {
-        ls.set("userName", userName);
-        ls.set("userCastles", userCastles);
-        ls.set("singleCastle", singleCastle);
-    }, [userName, userCastles, singleCastle])
+        localStorage.setItem("userName", userName);
+        localStorage.setItem("userCastles", JSON.stringify(userCastles));
+    }, [userName, userCastles]);
+
+    const handleAdd = (castleID) => {
+        const stateCopy = [...castles];
+        stateCopy.forEach(elem => {
+            const checkDouble = userCastles.includes(elem);
+            if (elem.id === castleID && checkDouble === false) {
+                setDoubledCastle(false);
+                setUserCastles(prev => [...prev, elem]);
+            }
+            if (checkDouble === true) {
+                setDoubledCastle(true);
+            }
+        });
+    }
+
+    const handleRemove = (castleID) => {
+        const stateCopy = [...userCastles];
+        stateCopy.forEach(elem => {
+            if (elem.id === castleID) {
+                setUserCastles(stateCopy.filter(prev => prev !== elem));
+            }
+        });
+    }
 
     return (
         <>
             <Router history={history}>
                 <Header formName={userName}/>
                 <Switch className="router__container">
-                    <Route exact path="/"
-                           render={(props) =>
-                               <Form {...props}
-                                     onDone={setUserName}
-                               />
-                           }
-                    />
+                    <Route exact path="/">
+                        {
+                            userName !== "" ?
+                                <Redirect to="/all"/>
+                                :
+                                <Form onDone={setUserName}/>
+                        }
+                    </Route>
                     <Route path="/all"
                            render={(props) =>
                                <AllList {...props}

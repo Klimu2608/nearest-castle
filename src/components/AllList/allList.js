@@ -3,10 +3,8 @@ import {Link} from "react-router-dom";
 import "./allList.scss";
 import "../../styles/_variables.scss";
 
-export const AllList = ({
-                            formName, images, allCastles, double, onAdd, onMore,
-                            popup, onPopup, currentCastle, onCurrentCastle
-                        }) => {
+export const AllList = ({formName, images, allCastles, double, onAdd, onMore,
+                            popup, onPopup, currentCastle, onCurrentCastle }) => {
 
     const width = window.innerWidth;
 
@@ -49,7 +47,7 @@ export const AllList = ({
                                     <p className="allList__castle--description">{castle.description}</p>
                                     <div className="allList__btn__container">
                                         <button onClick={() => {
-                                            onAdd(castle.name);
+                                            onAdd(castle.id);
                                             onCurrentCastle(castle);
                                             onPopup(true);
                                         }}
