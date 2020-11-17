@@ -37,6 +37,11 @@
       color: $header-color;
       margin: 0 20px;
       line-height: 30px;
+
+      .about__text--link {
+        text-decoration: none;
+        color: tomato;
+      }
     }
   }
 }
