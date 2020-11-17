@@ -28,7 +28,7 @@ export const UserList = ({formName, onRemove, onMore, userCastles, images, popup
                           </div>
                       }
                       <div className="userList__empty">
-                          <span>Add some castles to see your list</span>
+                          <span>Add some castles to your list!</span>
                       </div>
                   </div>
               </section>

@@ -23,7 +23,6 @@ function App() {
     const [currentCastle, setCurrentCastle] = useState({});
 
     const history = createHistory();
-    console.log(userCastles);
 
     useEffect(() => {
 
@@ -43,11 +42,11 @@ function App() {
             setCastles(newState);
         });
         setUserCastles(JSON.parse(localStorage.getItem("userCastles")));
-        setUserName(localStorage.getItem("userName"));
+        setUserName(JSON.parse(localStorage.getItem("userName")));
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("userName", userName);
+        localStorage.setItem("userName", JSON.stringify(userName));
         localStorage.setItem("userCastles", JSON.stringify(userCastles));
     }, [userName, userCastles]);
 
@@ -81,11 +80,11 @@ function App() {
             <Router history={history}>
                 <Header formName={userName}/>
                 <Switch className="router__container">
-                    <Route exact path="/">
+                    <Route exact path="/" >
                         {userName === "" ?
                             <Form onDone={setUserName}/>
                             :
-                            <Redirect to="/all"/>
+                            <Redirect to="all"/>
                         }
                     </Route>
                     <Route path="/all"
@@ -133,7 +132,7 @@ function App() {
                                />
                            }
                     />
-                    <Route path={`/castle/:param`}
+                    <Route path="/castle/:param"
                            children={(props) =>
                                <Castle {...props}
                                        castle={singleCastle}
