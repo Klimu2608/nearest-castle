@@ -24,3 +24,5 @@ yarn-error.log*
 
 .idea/
 .env
+# Local Netlify folder
+.netlify

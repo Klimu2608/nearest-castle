@@ -65,9 +65,9 @@ function App() {
             });
             setCastles(newState);
         });
-        setUserName(ls.get("userName"));
         setUserCastles(ls.get("userCastles"));
         setSingleCastle(ls.get("singleCastle"));
+        setUserName(ls.get("userName"));
     }, [])
 
     useEffect(() => {

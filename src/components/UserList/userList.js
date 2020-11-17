@@ -2,7 +2,8 @@ import React, {useEffect} from "react";
 import "./userList.scss";
 import {Link} from "react-router-dom";
 
-export const UserList = ({formName, onRemove, onMore, userCastles, images, popup, onPopup, currentCastle, onCurrentCastle}) => {
+export const UserList = (
+    {formName, onRemove, onMore, userCastles, images, popup, onPopup, currentCastle, onCurrentCastle}) => {
 
     const width = window.innerWidth;
 

@@ -19,7 +19,7 @@ export const Footer = ({onUserName}) => {
             <footer className="footer">
                 <div className="footer__container container">
                     <button onClick={handleLogOut} className="footer__btn">Log out</button>
-                    <p className="footer__text">Copyright by Jakub Klimczak</p>
+                    <p className="footer__text">Created by Jakub Klimczak</p>
                 </div>
             </footer>
         </>
