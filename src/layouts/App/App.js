@@ -14,7 +14,7 @@ import {images} from "../../images";
 import "./App.scss";
 
 function App() {
-    const [userName, setUserName] = useState("");
+    const [userName, setUserName] = useState(null);
     const [castles, setCastles] = useState([]);
     const [userCastles, setUserCastles] = useState([]);
     const [singleCastle, setSingleCastle] = useState({});
@@ -52,8 +52,9 @@ function App() {
 
     const handleAdd = (castleID) => {
         const stateCopy = [...castles];
+        const userCopy = [...userCastles];
         stateCopy.forEach(elem => {
-            const checkDouble = userCastles.includes(elem);
+            const checkDouble = userCopy.includes(elem);
             if (elem.id === castleID && checkDouble === false) {
                 setDoubledCastle(false);
                 setUserCastles(prev => [...prev, elem]);
@@ -78,30 +79,32 @@ function App() {
             <Router history={history}>
                 <Header formName={userName}/>
                 <Switch className="router__container">
-                    <Route exact path="/">
-                        {
-                            userName !== "" ?
-                                <Redirect to="/all"/>
-                                :
-                                <Form onDone={setUserName}/>
-                        }
-                    </Route>
-                    <Route path="/all"
-                           render={(props) =>
-                               <AllList {...props}
-                                        formName={userName}
-                                        images={images}
-                                        allCastles={castles}
-                                        double={doubledCastle}
-                                        popup={popup}
-                                        onPopup={setPopup}
-                                        onAdd={handleAdd}
-                                        onMore={setSingleCastle}
-                                        currentCastle={currentCastle}
-                                        onCurrentCastle={setCurrentCastle}
-                               />
-                           }
-                    />
+                    {userName === "" ?
+                        <Route exact path="/"
+                               render={(props) =>
+                                   <Form {...props}
+                                         onDone={setUserName}
+                                   />
+                               }
+                        />
+                        :
+                        <Route path="/all"
+                               render={(props) =>
+                                   <AllList {...props}
+                                            formName={userName}
+                                            images={images}
+                                            allCastles={castles}
+                                            double={doubledCastle}
+                                            popup={popup}
+                                            onPopup={setPopup}
+                                            onAdd={handleAdd}
+                                            onMore={setSingleCastle}
+                                            currentCastle={currentCastle}
+                                            onCurrentCastle={setCurrentCastle}
+                                   />
+                               }
+                        />
+                    }
                     <Route path="/my"
                            render={(props) =>
                                <UserList {...props}
