@@ -14,7 +14,7 @@ import {images} from "../../images";
 import "./App.scss";
 
 function App() {
-    const [userName, setUserName] = useState(null);
+    const [userName, setUserName] = useState("");
     const [castles, setCastles] = useState([]);
     const [userCastles, setUserCastles] = useState([]);
     const [singleCastle, setSingleCastle] = useState({});
@@ -79,32 +79,29 @@ function App() {
             <Router history={history}>
                 <Header formName={userName}/>
                 <Switch className="router__container">
-                    {userName === "" ?
-                        <Route exact path="/"
-                               render={(props) =>
-                                   <Form {...props}
-                                         onDone={setUserName}
-                                   />
-                               }
-                        />
-                        :
-                        <Route path="/all"
-                               render={(props) =>
-                                   <AllList {...props}
-                                            formName={userName}
-                                            images={images}
-                                            allCastles={castles}
-                                            double={doubledCastle}
-                                            popup={popup}
-                                            onPopup={setPopup}
-                                            onAdd={handleAdd}
-                                            onMore={setSingleCastle}
-                                            currentCastle={currentCastle}
-                                            onCurrentCastle={setCurrentCastle}
-                                   />
-                               }
-                        />
-                    }
+                    <Route exact path="/">
+                        {userName === "" ?
+                            <Form onDone={setUserName}/>
+                            :
+                            <Redirect to="/all"/>
+                        }
+                    </Route>
+                    <Route path="/all"
+                           render={(props) =>
+                               <AllList {...props}
+                                        formName={userName}
+                                        images={images}
+                                        allCastles={castles}
+                                        double={doubledCastle}
+                                        popup={popup}
+                                        onPopup={setPopup}
+                                        onAdd={handleAdd}
+                                        onMore={setSingleCastle}
+                                        currentCastle={currentCastle}
+                                        onCurrentCastle={setCurrentCastle}
+                               />
+                           }
+                    />
                     <Route path="/my"
                            render={(props) =>
                                <UserList {...props}
