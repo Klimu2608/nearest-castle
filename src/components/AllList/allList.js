@@ -16,7 +16,7 @@ export const AllList = ({formName, images, allCastles, double, onDouble, onAdd, 
         <>
             <section className="allList">
                 <div className="allList__container">
-                    {(formName === "" || width > 768) ?
+                    {(Boolean(formName) === false || width > 768) ?
                         <div className="allList__username__container">
                             <span className="username__question">What would you like to visit today?</span>
                         </div>

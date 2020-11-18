@@ -2,27 +2,32 @@ import React, {useState} from "react";
 import "./form.scss";
 import {useHistory} from 'react-router-dom';
 
-export const Form = ({onDone}) => {
+export const Form = ({onDone, popup, onPopup}) => {
     const [name, setName] = useState("");
 
     const history = useHistory();
 
     const handleSubmit = e => {
         e.preventDefault();
-
         if (name !== "") {
             onDone(name);
             let path = "/all";
             history.push(path);
-
         } else {
-            alert("Type your name to continue");
+            onPopup(true);
         }
     }
 
     return (
         <>
             <div className="container">
+                {
+                    popup === true &&
+                    <div className="form__popup">
+                        <span className="popup__text">You have to type your name to continue!</span>
+                        <button onClick={() => onPopup(false)} className="popup__btn">close</button>
+                    </div>
+                }
                 <form onSubmit={handleSubmit} className="form">
                     <div className="form__container">
                         <span className="form__hello">Hello,</span>

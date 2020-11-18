@@ -1,57 +1,28 @@
 import React from "react";
 import "./header.scss";
 import {Link, useHistory} from "react-router-dom";
-import logo from "../../icons/castle2.svg"
+import logo from "../../icons/castle2.svg";
+import user from "../../icons/user.svg";
 
-export const Header = ({formName}) => {
+export const Header = ({userName, onPopup}) => {
     const width = window.innerWidth;
     const history = useHistory();
 
     const handleClickMenu = () => {
-
-        if (formName !== "") {
+        if (userName !== "") {
             const headerNav = document.querySelector(".header__nav--mobile");
             headerNav.classList.toggle("hidden");
-
         } else {
-            alert("Type your name to continue");
+            onPopup(true);
         }
     }
 
-    const handleClickCastles = (e) => {
+    const handleClick = (e, path) => {
         e.preventDefault();
-        if (formName !== "") {
-            let path = "/all";
+        if (userName !== "") {
             history.push(path);
         } else {
-            alert("Type your name to continue");
-        }
-    }
-    const handleClickMy = (e) => {
-        e.preventDefault();
-        if (formName !== "") {
-            let path = "/my";
-            history.push(path);
-        } else {
-            alert("Type your name to continue");
-        }
-    }
-    const handleClickContact = (e) => {
-        e.preventDefault();
-        if (formName !== "") {
-            let path = "/contact";
-            history.push(path);
-        } else {
-            alert("Type your name to continue");
-        }
-    }
-    const handleClickAbout = (e) => {
-        e.preventDefault();
-        if (formName !== "") {
-            let path = "/about";
-            history.push(path);
-        } else {
-            alert("Type your name to continue");
+            onPopup(true);
         }
     }
 
@@ -59,20 +30,20 @@ export const Header = ({formName}) => {
         return (
             <header className="header">
                 <div className="header__container">
-                    <Link onClick={handleClickCastles} className="header__logo" to="/all">
+                    <Link onClick={e => handleClick(e, "/all")} className="header__logo" to="/all">
                         <span>Nearest</span>
                         <img src={logo} className="header__logo__castle" alt="logo"/>
                         <span>Castle</span>
                     </Link>
                     <nav className="header__nav">
-                        <Link onClick={handleClickCastles} to="/all" className="header__nav__link">castles</Link>
-                        <Link onClick={handleClickMy} to="/my" className="header__nav__link">my</Link>
-                        <Link onClick={handleClickContact} to="/contact" className="header__nav__link">contact</Link>
-                        <Link onClick={handleClickAbout} to="/about" className="header__nav__link">about</Link>
+                        <Link onClick={e => handleClick(e, "/all")} to="/all" className="header__nav__link">castles</Link>
+                        <Link onClick={e => handleClick(e, "/my")} to="/my" className="header__nav__link">my</Link>
+                        <Link onClick={e => handleClick(e, "/contact")} to="/contact" className="header__nav__link">contact</Link>
+                        <Link onClick={e => handleClick(e, "/about")} to="/about" className="header__nav__link">about</Link>
                     </nav>
-                    <Link onClick={handleClickMy} className="header__user" to="/my">
-                        <div className="header__user__icon"></div>
-                        <span className="header__user__name">{formName}</span>
+                    <Link onClick={e => handleClick(e, "/my")} className="header__user" to="/my">
+                        <img src={user} className="header__user__icon" alt="user-icon"/>
+                        <span className="header__user__name">{userName}</span>
                     </Link>
                 </div>
             </header>
@@ -81,7 +52,7 @@ export const Header = ({formName}) => {
         return (
             <header className="header">
                 <div className="header__container">
-                    <Link onClick={handleClickCastles} className="header__logo" to="/all">
+                    <Link onClick={e => handleClick(e, "/all")} className="header__logo" to="/all">
                         <span>Nearest</span>
                         <img src={logo} className="header__logo__castle" alt="logo"/>
                         <span>Castle</span>

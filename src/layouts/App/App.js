@@ -80,12 +80,17 @@ function App() {
     return (
         <>
             <Router history={history}>
-                <Header formName={userName}/>
+                <Header userName={userName}
+                        onPopup={setPopup}
+                />
                 <Switch className="router__container">
                     <Route exact path="/">
                         {
                             Boolean(userName) === false ?
-                                <Form onDone={setUserName}/>
+                                <Form onDone={setUserName}
+                                      popup={popup}
+                                      onPopup={setPopup}
+                                />
                                 :
                                 <Redirect to="all"/>
                         }

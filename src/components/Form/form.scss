@@ -3,107 +3,159 @@
 @import "../../styles/fonts";
 @import "../../styles/variables";
 
-.form {
-  .form__container {
+.container {
+  position: relative;
+  height: calc(100% - 130px);
+  max-width: $container-width;
+
+  .form__popup {
+    width: 320px;
+    height: 180px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $header-color;
+    color: $font-color;
+    font-family: $main-regular;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height: calc(100vh - 130px);
-    font-family: $main-regular;
-    width: 80%;
-    margin: 0 auto;
-    z-index: 0;
+    z-index: 100;
 
-    .form__hello {
-      font-size: 3rem;
-      color: tomato;
-      margin-top: 50px;
-      margin-bottom: 30px;
-    }
-
-    .form__text {
-      font-size: 17px;
-      text-align: center;
-      color: $header-color;
-      margin-bottom: 20px;
-    }
-
-    .form__input__name {
-      margin-bottom: 20px;
-      font-size: 17px;
-      border: 1px solid $header-color;
-      height: 25px;
-      border-radius: 3px;
-
-    }
-
-    .form__input__name::placeholder {
-      color: $navbar-color;
-      opacity: 0.5;
-      text-align: center;
-      z-index: -1;
-    }
-
-    .form__checkbox {
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      font-size: 13px;
-      color: $header-color;
-
-
-      .form__checkbox__input {
-        display: block;
-        width: 15px;
-        height: 15px;
-        flex-shrink: 0;
-        border: 2px solid $header-color;
-        border-radius: 3px;
-        background-color: $background-color;
-        margin-right: 10px;
-      }
-    }
-
-    .form__btn {
-      width: 150px;
-      height: 40px;
-      margin-top: 40px;
-      text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: $main-regular;
+    .popup__text {
       font-weight: bold;
       font-size: 18px;
-      color: $header-color;
-      background: tomato;
-      border: 1px solid $header-color;
+      margin-bottom: 40px;
+    }
+    .popup__btn {
+      text-transform: uppercase;
+      border: 3px solid $navbar-color;
+      color: $font-color;
+      font-weight: bold;
+      padding: 10px;
+      background: $header-color;
       border-radius: 5px;
+    }
+  }
+  .form {
+    .form__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: calc(100vh - 130px);
+      font-family: $main-regular;
+      width: 80%;
+      margin: 0 auto;
+      z-index: 0;
+
+      .form__hello {
+        font-size: 3rem;
+        color: tomato;
+        margin-top: 50px;
+        margin-bottom: 30px;
+      }
+
+      .form__text {
+        font-size: 17px;
+        text-align: center;
+        color: $header-color;
+        margin-bottom: 20px;
+      }
+
+      .form__input__name {
+        margin-bottom: 20px;
+        font-size: 17px;
+        border: 1px solid $header-color;
+        height: 25px;
+        border-radius: 3px;
+
+      }
+
+      .form__input__name::placeholder {
+        color: $navbar-color;
+        opacity: 0.5;
+        text-align: center;
+        z-index: -1;
+      }
+
+      .form__checkbox {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+        color: $header-color;
+
+
+        .form__checkbox__input {
+          display: block;
+          width: 15px;
+          height: 15px;
+          flex-shrink: 0;
+          border: 2px solid $header-color;
+          border-radius: 3px;
+          background-color: $background-color;
+          margin-right: 10px;
+        }
+      }
+
+      .form__btn {
+        width: 150px;
+        height: 40px;
+        margin-top: 40px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: $main-regular;
+        font-weight: bold;
+        font-size: 18px;
+        color: $header-color;
+        background: tomato;
+        border: 1px solid $header-color;
+        border-radius: 5px;
+      }
     }
   }
 }
 
 @include tablet {
-  .form {
-    .form__container {
-      .form__hello {
-        margin-bottom: 40px;
+  .container {
+    .form__popup {
+      width: 500px;
+      height: 250px;
+
+      .popup__text {
+        font-size: 22px;
       }
 
-      .form__text {
-        margin-bottom: 30px;
-      }
-
-      .form__input__name {
-        margin-bottom: 30px;
-      }
-
-      .form__checkbox {
+      .popup__btn:hover {
         cursor: pointer;
       }
+    }
+    .form {
+      .form__container {
+        .form__hello {
+          margin-bottom: 40px;
+        }
 
-      .form__btn {
-        cursor: pointer;
+        .form__text {
+          margin-bottom: 30px;
+        }
+
+        .form__input__name {
+          margin-bottom: 30px;
+        }
+
+        .form__checkbox {
+          cursor: pointer;
+        }
+
+        .form__btn {
+          cursor: pointer;
+        }
       }
     }
   }

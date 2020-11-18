@@ -2,6 +2,10 @@
 @import "../../styles/fonts";
 @import "../../styles/variables";
 
+body {
+  position: relative;
+}
+
 .header {
   background-color: $header-color;
   color: $font-color;
@@ -138,9 +142,7 @@
         .header__user__icon {
           height: 30px;
           width: 30px;
-          background-image: url("../../icons/user.svg");
-          background-position: center;
-          background-size: cover;
+          object-fit: cover;
           background-color: $background-color;
           border-radius: 50%;
         }
